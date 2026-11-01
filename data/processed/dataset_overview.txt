@@ -1,0 +1,38 @@
+RECORDING TYPES
+                        recordings  words  error_words  mean_seconds
+error_type                                                          
+clean                          400   1769            0          6.23
+control_seam                   200    908            0          6.17
+word_deletion                  240   1080          240          4.87
+madd_shortening                240   1091          240          5.97
+madd_lengthening               200    889          200          7.28
+word_substitution              200    905          200          6.32
+near_miss_substitution         200    904          200          6.35
+word_repetition                160    705          160          7.32
+truncation                     160    835          160          3.86
+
+recordings 2000, words 9086, reciters 8
+
+LENGTH STATISTICS (one row per recording)
+                         mean   std   min   25%   50%   75%    max
+learner-side length (s)  6.05  3.44  0.97  3.78  5.34  7.29  33.43
+reference length (s)     6.38  3.39  1.83  4.23  5.63  7.50  32.31
+words per recording      4.54  2.13  3.00  3.00  4.00  5.00  21.00
+
+REC_LEN_RATIO (new / orig duration) BY RECORDING TYPE
+                         mean    std    min    max
+error_type                                        
+clean                   1.000  0.000  1.000  1.000
+control_seam            0.992  0.003  0.978  0.998
+word_deletion           0.766  0.110  0.445  0.963
+madd_shortening         0.871  0.063  0.645  0.984
+madd_lengthening        1.221  0.132  1.032  1.771
+word_substitution       0.993  0.169  0.564  1.960
+near_miss_substitution  0.988  0.022  0.919  1.056
+word_repetition         1.216  0.098  1.025  1.538
+truncation              0.528  0.153  0.135  0.888
+
+BALANCE
+words: 7686 correct, 1400 error (15.4%), 5.49 : 1
+recordings: 600 without an error, 1400 with one (70%); each error recording has exactly one error word
+by reciter (error rate): Abdul 13.9%, Abu 16.4%, Alafasy 15.4%, Hani 14.9%, Husary 16.4%, Minshawy 17.4%, Mohammad 14.3%, Saood 14.7%

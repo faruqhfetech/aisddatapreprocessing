@@ -1,0 +1,175 @@
+TRAIN-ONLY AUDIT: 6763 rows from the 6 training reciters
+
+==============================================================================
+A1. SHAPE
+==============================================================================
+rows N = 6763, columns = 23 (P = 22 features + 1 target)
+recordings = 1470, reciters = 6, distinct verses = 446
+
+==============================================================================
+A2. VARIABLE INVENTORY
+==============================================================================
+continuous  (12): orig_duration_ms, new_duration_ms, stretch_rate, test_frac, ref_frac, dtw_cost, width, dur_ratio, dur_z, cost_z, log_dev, suspicion
+discrete    (4): word_idx, n_words, surah, ayah
+binary      (1): collapsed
+nominal     (4): reciter, error_type, tier, split
+identifier  (1): recording_id
+ordinal: none; datetime/text: none
+
+reciter: 6 levels -> {'Mohammad_al_Tablaway_128kbps': 1250, 'Saood_ash-Shuraym_128kbps': 1170, 'Alafasy_128kbps': 1147, 'Hani_Rifai_192kbps': 1092, 'Abdul_Basit_Murattal_64kbps': 1073, 'Abu_Bakr_Ash-Shaatree_128kbps': 1031}
+error_type: 9 levels -> {'clean': 1351, 'word_deletion': 797, 'madd_shortening': 763, 'control_seam': 743, 'madd_lengthening': 695, 'near_miss_substitution': 663, 'truncation': 634, 'word_substitution': 619, 'word_repetition': 498}
+tier: 4 levels -> {'control': 2094, 'structural': 1929, 'prosodic': 1458, 'segmental': 1282}
+split: 1 levels -> {'dev': 6763}
+collapsed: 2 levels -> {0.0: 6752, 1.0: 11}
+collapsed: unique values [np.float64(0.0), np.float64(1.0)]
+
+==============================================================================
+A3. MISSINGNESS
+==============================================================================
+stretch_rate: 5305 missing (78.44%)
+overall: 5305 of 148786 cells missing (3.57%)
+complete rows: 1458, rows with >=1 missing: 5305
+
+stretch_rate presence by error_type (rows):
+error_type
+clean                       0
+control_seam                0
+madd_lengthening          695
+madd_shortening           763
+near_miss_substitution      0
+truncation                  0
+word_deletion               0
+word_repetition             0
+word_substitution           0
+
+stretch_rate missingness indicator against other variables:
+  missing vs error_type    chi2=  6763.00 dof= 8 p=0 V=1.000
+  missing vs is_error_word chi2=    67.48 dof= 1 p=2.13e-16 V=0.100
+
+==============================================================================
+A4. TARGET
+==============================================================================
+class 0: 5754, class 1: 1009, positive rate 14.92%, imbalance ratio 5.70:1
+
+positive rate by reciter:
+                               count   mean
+reciter                                    
+Abdul_Basit_Murattal_64kbps     1073  0.139
+Abu_Bakr_Ash-Shaatree_128kbps   1031  0.164
+Alafasy_128kbps                 1147  0.154
+Hani_Rifai_192kbps              1092  0.149
+Mohammad_al_Tablaway_128kbps    1250  0.143
+Saood_ash-Shuraym_128kbps       1170  0.147
+
+==============================================================================
+B. DISTRIBUTIONS AND OUTLIERS (continuous + discrete)
+==============================================================================
+                     n      mean    median       std       min        max   skew     kurt    iqr_lo     iqr_hi  iqr_out  iqr_out_pct  z3_out
+feature                                                                                                                                     
+orig_duration_ms  6763  7066.917  5647.000  4702.311  1828.000  32313.000  2.445    7.587 -1295.000  13441.000      581        8.591     171
+new_duration_ms   6763  6647.311  5355.000  4667.896   970.000  33428.000  2.448    7.745 -2213.500  13662.500      475        7.024     171
+stretch_rate      1458     1.399     1.865     0.876     0.400      2.592 -0.002   -1.869    -2.074      4.802        0        0.000       0
+test_frac         6763     0.217     0.193     0.137     0.001      0.877  0.855    0.420    -0.176      0.583       91        1.346      55
+ref_frac          6763     0.216     0.200     0.121     0.006      0.645  0.636   -0.074    -0.142      0.553       48        0.710      26
+dtw_cost          6763     0.336     0.323     0.127     0.027      1.238  0.830    1.881     0.001      0.656       97        1.434      52
+width             6763   104.442    91.000    71.043     1.000   1147.000  2.319   14.088   -58.500    249.500      280        4.140      91
+dur_ratio         6763     1.013     1.003     0.330     0.033      3.480  0.918    4.648     0.367      1.629      435        6.432      78
+dur_z             6763     0.679     0.000     4.223   -19.808     91.777  8.702  125.178    -2.698      2.698      781       11.548     108
+cost_z            6763     0.137     0.000     1.952   -11.513     31.663  3.349   38.225    -2.698      2.698      466        6.890     133
+log_dev           6763     0.248     0.156     0.299     0.000      3.394  3.471   18.863    -0.307      0.693      414        6.122     141
+suspicion         6763     1.702     0.655     4.288     0.000     93.851  8.696  117.078    -2.346      3.910      710       10.498     108
+word_idx          6763     2.355     2.000     2.575     0.000     20.000  2.372    8.078    -2.000      6.000      437        6.462     142
+n_words           6763     5.710     4.000     3.463     3.000     21.000  2.253    5.299     1.000      9.000      693       10.247      84
+surah             6763    88.989    87.000     9.093    78.000    114.000  0.832   -0.072    61.000    117.000        0        0.000       0
+ayah              6763    13.530    10.000    10.566     1.000     46.000  0.993    0.222   -16.000     40.000      118        1.745       9
+
+skew rule: |skew| < 0.5 ~symmetric, 0.5-1 moderate, > 1 high
+
+log1p skew check for positive right-skewed features:
+orig_duration_ms: skew 2.44 -> log1p skew 0.68
+new_duration_ms: skew 2.45 -> log1p skew 0.38
+width: skew 2.32 -> log1p skew -0.96
+log_dev: skew 3.47 -> log1p skew 1.98
+suspicion: skew 8.70 -> log1p skew 1.48
+word_idx: skew 2.37 -> log1p skew 0.14
+n_words: skew 2.25 -> log1p skew 1.22
+
+==============================================================================
+C. FEATURE-TARGET ASSOCIATION
+==============================================================================
+continuous/discrete vs binary target: point-biserial r, Mann-Whitney U, mutual information
+                      pb_r       pb_p      mwu_p       MI
+feature                                                  
+log_dev             0.2895 1.113e-130 9.877e-129  0.05119
+dur_ratio         -0.08113  2.366e-11  5.635e-19  0.04966
+word_idx           0.00526     0.6654   9.04e-14   0.0475
+suspicion           0.2317  3.881e-83 5.869e-126  0.04612
+dur_z               0.2043  1.284e-64  3.942e-83  0.04477
+ref_frac             0.151   8.73e-36  2.309e-34   0.0254
+dtw_cost             0.191  1.318e-56  3.438e-58  0.02158
+cost_z              0.1404  4.143e-31  3.402e-53  0.01196
+width              0.02222    0.06771  0.0001106 0.009734
+n_words             -0.131  2.964e-27  1.458e-38 0.009709
+ayah             -0.003394     0.7802     0.8276 0.007999
+test_frac          0.08143  1.997e-11  6.497e-08 0.006609
+surah             -0.01252     0.3033     0.2698 0.004282
+new_duration_ms    -0.1129  1.269e-20  1.026e-24        0
+stretch_rate      -0.01289     0.6229     0.5353        0
+orig_duration_ms   -0.1106  7.519e-20  2.506e-21        0
+
+categorical vs binary target: chi-square, Cramer's V
+reciter    chi2=     3.30 dof= 5 p=0.654 V=0.022
+error_type chi2=   535.91 dof= 8 p=1.38e-110 V=0.281
+tier       chi2=   532.69 dof= 3 p=3.93e-115 V=0.281
+split      only one level or class; chi-square skipped
+collapsed  chi2=     0.00 dof= 1 p=1 V=0.000
+
+positive rate by error_type (leakage check):
+error_type
+clean                     0.000
+control_seam              0.000
+madd_lengthening          0.222
+madd_shortening           0.214
+near_miss_substitution    0.222
+truncation                0.191
+word_deletion             0.220
+word_repetition           0.223
+word_substitution         0.223
+
+==============================================================================
+D. MULTICOLLINEARITY
+==============================================================================
+pairs with |r| >= 0.85 (Pearson / Spearman):
+  orig_duration_ms   new_duration_ms    pearson=+0.937 spearman=+0.864
+  orig_duration_ms   n_words            pearson=+0.858 spearman=+0.708
+  test_frac          ref_frac           pearson=+0.860 spearman=+0.875
+  dur_z              suspicion          pearson=+0.902 spearman=+0.644
+
+VIF (all numeric features, standardized, with constant):
+  orig_duration_ms        14.75
+  new_duration_ms         13.05
+  test_frac               16.84
+  ref_frac                13.11
+  dtw_cost                 1.55
+  width                    3.43
+  dur_ratio                3.97
+  dur_z                   11.16
+  cost_z                   2.79
+  log_dev                  1.46
+  suspicion               12.13
+  word_idx                 1.89
+  n_words                  5.85
+  surah                    1.63
+  ayah                     1.62
+
+==============================================================================
+E. EXTRA CHECKS QUOTED IN THE REPORTS
+==============================================================================
+first words: 1470, of which errors: 0 (0.0%)
+
+positive rate by split (dev = the 6 training reciters, holdout = the 2 test reciters):
+       count   sum   mean  neg_per_pos
+split                                 
+dev     6763  1009  0.149        5.703
+
+rec_len_ratio skew -0.79, log1p skew -1.39

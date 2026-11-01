@@ -1,0 +1,24 @@
+{
+  "seed": 1,
+  "n": 2000,
+  "sr": 16000,
+  "crossfade_ms": 20,
+  "rms_matched": true,
+  "manifest": "manifest_full.csv",
+  "suspects_excluded": 47,
+  "holdout_reciters": [
+    "Husary_64kbps",
+    "Minshawy_Murattal_128kbps"
+  ],
+  "counts": {
+    "clean": 400,
+    "control_seam": 200,
+    "word_deletion": 240,
+    "word_repetition": 160,
+    "truncation": 160,
+    "madd_shortening": 240,
+    "madd_lengthening": 200,
+    "word_substitution": 200,
+    "near_miss_substitution": 200
+  }
+}

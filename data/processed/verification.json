@@ -1,0 +1,25 @@
+{
+  "raw shape (N x P+1)": [
+    9086,
+    23
+  ],
+  "features in -> out": [
+    22,
+    9
+  ],
+  "rows in -> out": [
+    9086,
+    9086
+  ],
+  "train shape": [
+    6763,
+    9
+  ],
+  "test shape": [
+    2323,
+    9
+  ],
+  "missing after pipeline": 0,
+  "train means ~0, std ~1": true,
+  "PCA components for 95% variance": "7 of 9"
+}

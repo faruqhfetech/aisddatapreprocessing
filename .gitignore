@@ -1,0 +1,20 @@
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+
+*.wav
+*.mp3
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.tex
+
+# course handouts
+Assignment 2 Data Preprocessing-1.pdf
+Assignment 3 Data Preprocessing Phase 2-1.pdf
+
+# helpers
+src/md_to_pdf.py
+*.tex
